@@ -130,7 +130,7 @@ fun FitnessSettings(
         // Workout frequency
         CustomDropdownOutlineTextField(
             text = viewModel.selectedWorkoutFrequencyText,
-            labelText = "Workout Frequency",
+            labelText = "Desired Workout Frequency",
             isExpanded = viewModel.workoutFrequencyExpanded,
             itemList = viewModel.workoutFrequencies,
             isEditable = false

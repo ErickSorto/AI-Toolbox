@@ -44,7 +44,7 @@ class FitnessViewModel @Inject constructor(
     val promptExpanded = mutableStateOf(false)
 
     val experienceLevels = listOf("Beginner", "Intermediate", "Advanced")
-    val workoutFrequencies = listOf("1-2 times per week", "3-4 times per week", "5-6 times per week", "Every day")
+    val workoutFrequencies = listOf("0 times per week", "1-2 times per week", "3-4 times per week", "5-6 times per week", "Every day")
     val workoutTypes = listOf("Strength Training", "Cardio", "Yoga", "Pilates", "HIIT", "Circuit Training", "CrossFit")
     val fitnessGoals = listOf("Lose Weight", "Build Muscle", "Improve Cardio", "Increase Flexibility", "Improve Endurance", "Boost Strength")
     val promptTypes = listOf("Workout Plan", "Exercise Recommendations", "Stretching Exercises", "Warm-up and Cool-down Routines", "Injury Prevention", "Progress Tracking", "Goal Setting", "Motivation Techniques", "Fitness Equipment Recommendations", "Hydration and Nutrition Tips")
@@ -67,6 +67,7 @@ class FitnessViewModel @Inject constructor(
     val detailsText = mutableStateOf("")
 
     private fun showAd(activity: ComponentActivity) {
+        getAIResponse()
         adHelper.showAd(activity,
             onAdRewarded = {
                 getAIResponse()
@@ -97,7 +98,7 @@ class FitnessViewModel @Inject constructor(
             val prompt =
                 "Generate a workout plan for $selectedDays based on ${selectedWorkoutTypeText.value} workouts. " +
                         "The experience level is ${selectedExperienceLevelText.value}, " +
-                        "the workout frequency is ${selectedWorkoutFrequencyText.value}, " +
+                        "the desired workout frequency is ${selectedWorkoutFrequencyText.value}, " +
                         "and the fitness goal is ${selectedFitnessGoalText.value}. " +
                         "Age: ${ageText.value}, Metric type: ${metricType.value}, Height: ${
                             if (metricType.value == "Imperial") {

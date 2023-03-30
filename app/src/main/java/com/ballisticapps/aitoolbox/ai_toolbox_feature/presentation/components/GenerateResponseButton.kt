@@ -1,5 +1,6 @@
 package com.ballisticapps.aitoolbox.ai_toolbox_feature.presentation.components
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -18,7 +19,7 @@ import com.ballisticapps.aitoolbox.R
 
 @Composable
 fun GenerateResponseAdButton(
-    onClick: () -> Unit
+    onClick: () -> Unit,
 ) {
     Button(
         onClick = onClick,
@@ -28,14 +29,19 @@ fun GenerateResponseAdButton(
         ),
 
         ) {
-        Icon(
-            painter = painterResource(id = R.drawable.baseline_smart_display_24),
-            contentDescription = "Generate Response Ad Button",
-            modifier = Modifier.padding(8.dp).size(32.dp),
-            tint = Color.White,
-        )
+
+            Icon(
+                painter = painterResource(id = R.drawable.baseline_smart_display_24),
+                contentDescription = "Generate Response Ad Button",
+                modifier = Modifier
+                    .padding(8.dp)
+                    .size(32.dp),
+                tint = Color.White,
+            )
+
+
         Spacer (modifier = Modifier.weight(1f))
-        Text("Watch Ad to Generate", modifier = Modifier.padding(8.dp), color = Color.White, fontSize = 16.sp)
+        Text("Generate Response", modifier = Modifier.padding(8.dp), color = Color.White, fontSize = 16.sp)
     }
 }
 

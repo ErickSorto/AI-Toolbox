@@ -44,7 +44,7 @@ fun CustomDropdownOutlineTextField(
                     Modifier.clickable {
                         isExpanded.value =
                             !isExpanded.value
-                    })
+                    }.size(32.dp))
             },
             colors = TextFieldDefaults.outlinedTextFieldColors(
                 focusedBorderColor = Color.White,

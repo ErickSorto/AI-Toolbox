@@ -7,6 +7,12 @@ sealed class Pages(
     val title: String?= null,
     val vector: Int?= null,
 ) {
+
+    object BookSummary: Pages(
+        route = "book_summary_page",
+        title = "Book Summary",
+        vector = R.drawable.baseline_local_library_24
+    )
     object Interview: Pages(
         route = "interview_page",
         title = "Interview",

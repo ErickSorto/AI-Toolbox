@@ -37,6 +37,7 @@ fun InterviewMainScreen(
 ) {
     //order alphabetically
     val items = listOf(
+        Pages.BookSummary,
         Pages.Interview,
         Pages.Addiction,
         Pages.Diet,

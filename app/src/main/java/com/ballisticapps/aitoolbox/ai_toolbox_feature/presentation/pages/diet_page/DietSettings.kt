@@ -127,7 +127,7 @@ fun DietSettings(
 
         CustomDropdownOutlineTextField(
             text = viewModel.selectedActivityLevelText,
-            labelText = "Activity Level",
+            labelText = "Daily Activity Level",
             isExpanded = viewModel.acivityLevelExpanded,
             itemList = viewModel.activityLevels
         )

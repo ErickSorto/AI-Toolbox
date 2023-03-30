@@ -123,7 +123,7 @@ class DietViewModel @Inject constructor(
                     append("The diet type chosen is ${selectedDietTypeText.value} ")
                 }
                 append(" with the goal of ${selectedGoalText.value}, ")
-                append("Activity level: ${selectedActivityLevelText.value}, ")
+                append("Activity level per day: ${selectedActivityLevelText.value}, ")
                 append("Age: ${ageText.value}, Metric type: ${systemType.value}, Height: ")
 
                 if (systemType.value == "Imperial") {
@@ -148,7 +148,7 @@ class DietViewModel @Inject constructor(
 
             val result = getOpenAITextResponse(
                 Prompt(
-                    model = "gpt-3.5-turbo",
+                    model = "gpt-3.5-turbo",  //gpt-4
                     messages = listOf(
                         Message(
                             role = "user",

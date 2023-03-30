@@ -27,6 +27,7 @@ import com.ballisticapps.aitoolbox.ai_toolbox_feature.presentation.pages.ai_page
 import com.ballisticapps.aitoolbox.ai_toolbox_feature.presentation.pages.addiction_page.AddictionSettings
 import com.ballisticapps.aitoolbox.ai_toolbox_feature.presentation.pages.ai_page.viewmodel.SharedAIViewModel
 import com.ballisticapps.aitoolbox.ai_toolbox_feature.presentation.pages.ai_page.viewmodel.UiEvent
+import com.ballisticapps.aitoolbox.ai_toolbox_feature.presentation.pages.book_summary_page.BookSummarySettings
 import com.ballisticapps.aitoolbox.ai_toolbox_feature.presentation.pages.diet_page.DietSettings
 import com.ballisticapps.aitoolbox.ai_toolbox_feature.presentation.pages.education_page.EducationSettings
 import com.ballisticapps.aitoolbox.ai_toolbox_feature.presentation.pages.financial_page.FinanceSettings
@@ -108,7 +109,8 @@ fun TabLayout(
                                         contentDescription = "Vector Icon",
                                         tint =if (pagerState.currentPage == index) Color.White else Color.White.copy(alpha = 0.5f),
                                         modifier = Modifier
-                                            .size(32.dp).padding(start = 8.dp)
+                                            .size(32.dp)
+                                            .padding(start = 8.dp)
                                     )
                                 }
                             }
@@ -127,6 +129,9 @@ fun TabLayout(
                 when (page) {
                     0 -> {
                         when (pageRoute) {
+                            Pages.BookSummary.route -> {
+                                BookSummarySettings(pagerState = pagerState)
+                            }
                             Pages.Interview.route -> {
                                 InterviewSettings(pagerState = pagerState)
                             }
