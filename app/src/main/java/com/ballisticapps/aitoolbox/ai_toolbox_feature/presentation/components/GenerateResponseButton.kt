@@ -1,6 +1,7 @@
 package com.ballisticapps.aitoolbox.ai_toolbox_feature.presentation.components
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -30,18 +31,68 @@ fun GenerateResponseAdButton(
 
         ) {
 
-            Icon(
-                painter = painterResource(id = R.drawable.baseline_smart_display_24),
-                contentDescription = "Generate Response Ad Button",
-                modifier = Modifier
-                    .padding(8.dp)
-                    .size(32.dp),
-                tint = Color.White,
-            )
+        Icon(
+            painter = painterResource(id = R.drawable.baseline_smart_display_24),
+            contentDescription = "Generate Response Ad Button",
+            modifier = Modifier
+                .padding(8.dp)
+                .size(32.dp),
+            tint = Color.White,
+        )
+
+        Text(
+            "Long Response",
+            modifier = Modifier.padding(8.dp),
+            color = Color.White,
+            fontSize = 12.sp
+        )
+
+        Spacer(modifier = Modifier.weight(1f))
+        Text(
+            "Watch Ad",
+            modifier = Modifier.padding(8.dp),
+            color = Color.White,
+            fontSize = 18.sp
+        )
+    }
+}
+
+@Composable
+fun GenerateResponseButton(
+    onClick: () -> Unit,
+    icon: Int,
+) {
+    Button(
+        onClick = onClick,
+        colors = buttonColors(
+            backgroundColor = colorResource(id = R.color.lighter_black),
+            contentColor = Color.White
+        ),
+
+        ) {
+
+        Icon(
+            painter = painterResource(id = icon),
+            contentDescription = "ICON",
+            modifier = Modifier
+                .padding(8.dp)
+                .size(32.dp),
+            tint = Color.White,
+        )
+
+        Text(
+            "Short Response",
+            modifier = Modifier.padding(8.dp),
+            color = Color.White,
+            fontSize = 12.sp
+        )
 
 
-        Spacer (modifier = Modifier.weight(1f))
-        Text("Generate Response", modifier = Modifier.padding(8.dp), color = Color.White, fontSize = 16.sp)
+        Spacer(modifier = Modifier.weight(1f))
+
+        Text("Free", modifier = Modifier.padding(8.dp), color = Color.White, fontSize = 18.sp)
+
+
     }
 }
 

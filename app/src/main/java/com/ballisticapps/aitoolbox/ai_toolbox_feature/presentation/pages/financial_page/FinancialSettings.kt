@@ -12,6 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.ballisticapps.aitoolbox.R
 import com.ballisticapps.aitoolbox.ai_toolbox_feature.presentation.HelperEvent
 import com.ballisticapps.aitoolbox.ai_toolbox_feature.presentation.components.*
 import com.ballisticapps.aitoolbox.ai_toolbox_feature.presentation.pages.financial_page.viewmodel.FinanceViewModel
@@ -103,6 +104,13 @@ fun FinanceSettings(
             labelText = "Finance Details",
             hint = "Enter any other details related to your finance goals \n (e.g. income, expenses, debts, etc.)",
             isWrapContent = false
+        )
+
+        GenerateResponseButton (
+            onClick = {
+                scope.launch { pagerState.animateScrollToPage(1) }
+                viewModel.onEvent(HelperEvent.ClickGenerateResponseWithoutAdButton(activity)) },
+            icon = R.drawable.baseline_attach_money_24
         )
 
         GenerateResponseAdButton(

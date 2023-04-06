@@ -28,9 +28,9 @@ object OpenAIModule {
     @Provides
     fun providesOkHttpClient(
         httpLoggingInterceptor: HttpLoggingInterceptor
-    ): OkHttpClient = OkHttpClient.Builder().connectTimeout(60, TimeUnit.SECONDS)
-        .readTimeout(60, TimeUnit.SECONDS)
-        .writeTimeout(60, TimeUnit.SECONDS).addInterceptor(httpLoggingInterceptor).build()
+    ): OkHttpClient = OkHttpClient.Builder().connectTimeout(240, TimeUnit.SECONDS)
+        .readTimeout(240, TimeUnit.SECONDS)
+        .writeTimeout(240, TimeUnit.SECONDS).addInterceptor(httpLoggingInterceptor).build()
 
 
     @Provides

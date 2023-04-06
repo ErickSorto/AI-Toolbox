@@ -46,6 +46,7 @@ class BookSummaryViewModel @Inject constructor(
 
 
     private fun showAd(activity: ComponentActivity) {
+        getAIResponse()
         adHelper.showAd(activity,
             onAdRewarded = {
                 getAIResponse()
@@ -67,10 +68,13 @@ class BookSummaryViewModel @Inject constructor(
             is HelperEvent.ClickGenerateResponseButton -> {
                 showAd(event.activity as ComponentActivity)
             }
+            is HelperEvent.ClickGenerateResponseWithoutAdButton -> {
+                getAIResponse(isFree = true)
+            }
         }
     }
 
-    private fun getAIResponse() {
+    private fun getAIResponse(isFree: Boolean = false) {
         viewModelScope.launch {
             val prompt = buildString {
                 append("I need a ${selectedPromptText.value} for the book \"${bookTitleText.value}\"")
@@ -92,7 +96,7 @@ class BookSummaryViewModel @Inject constructor(
                             content = prompt
                         )
                     ),
-                   // maxTokens = 500,
+                    maxTokens = if (isFree) 200 else 1000,
                     temperature = 0.7,
                     topP = 1.0,
                     presencePenalty = 0,

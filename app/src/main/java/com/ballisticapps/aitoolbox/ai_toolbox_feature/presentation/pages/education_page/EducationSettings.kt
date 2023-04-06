@@ -12,6 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.ballisticapps.aitoolbox.R
 import com.ballisticapps.aitoolbox.ai_toolbox_feature.presentation.HelperEvent
 import com.ballisticapps.aitoolbox.ai_toolbox_feature.presentation.components.*
 import com.ballisticapps.aitoolbox.ai_toolbox_feature.presentation.pages.education_page.viewmodel.EducationViewModel
@@ -67,6 +68,13 @@ fun EducationSettings(
             labelText = "Study Goal",
             hint = "Enter your study goal",
             isWrapContent = false,
+        )
+
+        GenerateResponseButton (
+            onClick = {
+                scope.launch { pagerState.animateScrollToPage(1) }
+                viewModel.onEvent(HelperEvent.ClickGenerateResponseWithoutAdButton(activity)) },
+            icon = R.drawable.baseline_edit_24
         )
 
         GenerateResponseAdButton(

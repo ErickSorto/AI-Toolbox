@@ -20,7 +20,6 @@ import javax.inject.Inject
 
 @HiltViewModel
 class AddictionViewModel @Inject constructor(
-    // private val sharedAIViewModel: SharedAIViewModel,
     private val getOpenAITextResponse: GetOpenAITextResponse,
     private val sharedRepository: SharedRepository,
     private val adHelper: AdHelper,
@@ -78,10 +77,13 @@ class AddictionViewModel @Inject constructor(
             is HelperEvent.ClickGenerateResponseButton -> {
                 showAd(event.activity as ComponentActivity)
             }
+            is HelperEvent.ClickGenerateResponseWithoutAdButton -> {
+                getAIResponse(isFree = true)
+            }
         }
     }
 
-    private fun getAIResponse() {
+    private fun getAIResponse(isFree: Boolean = false) {
         viewModelScope.launch {
             // Customize the prompt according to your needs
             val prompt =
@@ -95,7 +97,7 @@ class AddictionViewModel @Inject constructor(
                             content = prompt
                         )
                     ),
-                    maxTokens = 500,
+                    maxTokens = if (isFree) 200 else 500,
                     temperature = 0.7,
                     topP = 1.0,
                     presencePenalty = 0,

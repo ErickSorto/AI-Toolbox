@@ -75,10 +75,13 @@ class EducationViewModel @Inject constructor(
             is HelperEvent.ClickGenerateResponseButton -> {
                 showAd(event.activity as ComponentActivity)
             }
+            is HelperEvent.ClickGenerateResponseWithoutAdButton -> {
+                getAIResponse(isFree = true)
+            }
         }
     }
 
-    private fun getAIResponse() {
+    private fun getAIResponse(isFree: Boolean = false) {
         viewModelScope.launch {
             // Customize the prompt according to your needs
             val selectedDays = getSelectedDays().joinToString(separator = ", ")
@@ -97,7 +100,7 @@ class EducationViewModel @Inject constructor(
                             content = prompt
                         )
                     ),
-                    maxTokens = 500,
+                    maxTokens = if (isFree) 200 else 500,
                     temperature = 0.7,
                     topP = 1.0,
                     presencePenalty = 0,

@@ -9,11 +9,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.ballisticapps.aitoolbox.R
 import com.ballisticapps.aitoolbox.ai_toolbox_feature.presentation.HelperEvent
-import com.ballisticapps.aitoolbox.ai_toolbox_feature.presentation.components.BannerAd
-import com.ballisticapps.aitoolbox.ai_toolbox_feature.presentation.components.CustomDropdownOutlineTextField
-import com.ballisticapps.aitoolbox.ai_toolbox_feature.presentation.components.CustomOutlineTextField
-import com.ballisticapps.aitoolbox.ai_toolbox_feature.presentation.components.GenerateResponseAdButton
+import com.ballisticapps.aitoolbox.ai_toolbox_feature.presentation.components.*
 import com.ballisticapps.aitoolbox.ai_toolbox_feature.presentation.pages.interview_page.viewmodel.InterviewViewModel
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.PagerState
@@ -68,6 +66,12 @@ fun InterviewSettings(
             isWrapContent = false
         )
 
+        GenerateResponseButton (
+            onClick = {
+                scope.launch { pagerState.animateScrollToPage(1) }
+                viewModel.onEvent(HelperEvent.ClickGenerateResponseWithoutAdButton(activity)) },
+            icon = R.drawable.baseline_speaker_notes_24
+        )
         GenerateResponseAdButton(
             onClick = {
                 scope.launch { pagerState.animateScrollToPage(1) }

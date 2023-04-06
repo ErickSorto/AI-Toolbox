@@ -29,7 +29,7 @@ import kotlinx.coroutines.DelicateCoroutinesApi
 
 
 @RequiresApi(Build.VERSION_CODES.O)
-@OptIn(DelicateCoroutinesApi::class, ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun InterviewMainScreen(
     navController: NavHostController
